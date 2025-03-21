@@ -1,0 +1,414 @@
+/* Tabla de usuarios - Diseño moderno */
+.tabla {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  background-color: white;
+  position: relative;
+  animation: fadeIn 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Cabecera con gradiente */
+.tabla thead {
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  position: relative;
+}
+
+.tabla thead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border-radius: 16px 16px 0 0;
+}
+
+.tabla th {
+  position: relative;
+  z-index: 1;
+  padding: 20px 25px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+}
+
+/* Filas y celdas */
+.tabla tbody tr {
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.tabla tbody tr:nth-child(odd) {
+  background-color: #fcfcff;
+}
+
+.tabla tbody tr:nth-child(even) {
+  background-color: #f7f9ff;
+}
+
+.tabla td {
+  padding: 18px 25px;
+  border: none;
+  border-bottom: 1px solid #ecf0f9;
+  color: #424f66;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Estilos específicos de celdas */
+.celda-id {
+  font-weight: 700;
+  color: #ff5f6d;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.celda-id::before {
+  content: '#';
+  opacity: 0.5;
+  margin-right: 2px;
+  font-size: 0.9rem;
+}
+
+.celda-nombre,
+.celda-apellidos {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.celda-usuario {
+  color: #ffc371;
+  font-weight: 600;
+  position: relative;
+  padding-left: 26px !important;
+}
+
+.celda-usuario::before {
+  content: '@';
+  position: absolute;
+  left: 25px;
+  opacity: 0.7;
+}
+
+.celda-fecha {
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.celda-contrasena {
+  font-family: 'Space Mono', 'Fira Code', monospace;
+  letter-spacing: 1px;
+  color: #495057;
+  background-color: rgba(239, 242, 249, 0.8);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Efectos hover en filas */
+.fila {
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation-fill-mode: both;
+}
+
+.fila::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 5px;
+  height: 0;
+  background: linear-gradient(to bottom, #ff5f6d, #ffc371);
+  transition: height 0.3s ease;
+}
+
+.fila:hover::after {
+  height: 100%;
+}
+
+.fila:hover {
+  background-color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 95, 109, 0.1);
+  z-index: 2;
+}
+
+.fila:hover td {
+  color: #172b4d;
+}
+
+/* Botones de acción */
+.tabla button {
+  padding: 10px 18px;
+  margin: 0 6px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tabla button:first-of-type {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 154, 158, 0.3);
+}
+
+.tabla button:last-of-type {
+  background: linear-gradient(135deg, #ff5f6d, #ff8a7a);
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 95, 109, 0.3);
+}
+
+.tabla button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tabla button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tabla button:first-of-type::before {
+  content: "✏️";
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.tabla button:last-of-type::before {
+  content: "🗑️";
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+/* Botón de añadir usuario */
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 25px 0;
+}
+
+.btn-add-user {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 154, 158, 0.25);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-add-user:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(255, 154, 158, 0.3);
+}
+
+.btn-add-user::before {
+  content: "+";
+  margin-right: 12px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-add-user:hover::before {
+  transform: rotate(90deg);
+}
+
+.btn-add-user::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.8s ease;
+  opacity: 0;
+}
+
+.btn-add-user:hover::after {
+  opacity: 1;
+  top: -100%;
+  left: -100%;
+}
+
+.btn-add-user[disabled] {
+  background: linear-gradient(135deg, #9d9d9d, #757575);
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  animation: pulse 1.5s infinite;
+}
+
+.btn-add-user[disabled]::before {
+  content: "⏳";
+  animation: spin 1.5s linear infinite;
+}
+
+/* Estado de carga */
+.loading-message {
+  display: block;
+  text-align: center;
+  color: #ff5f6d;
+  padding: 25px;
+  background-color: #f7f9ff;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  width: fit-content;
+  margin: 25px auto;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-message::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 30%;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
+  animation: loading 1.5s infinite ease-in-out;
+  border-radius: 3px;
+}
+
+/* Formulario modal */
+.modal-form {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(26, 32, 44, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Encabezado */
+h1 {
+  text-align: center;
+  color: #1a202c;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  border-radius: 3px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes loading {
+  0% { left: 0; width: 0; }
+  50% { left: 25%; width: 50%; }
+  100% { left: 100%; width: 0; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.6; }
+}
+
+/* Retrasos en animación de filas */
+.fila:nth-child(1) { animation-delay: 0.05s; }
+.fila:nth-child(2) { animation-delay: 0.10s; }
+.fila:nth-child(3) { animation-delay: 0.15s; }
+.fila:nth-child(4) { animation-delay: 0.20s; }
+.fila:nth-child(5) { animation-delay: 0.25s; }
+.fila:nth-child(6) { animation-delay: 0.30s; }
+.fila:nth-child(7) { animation-delay: 0.35s; }
+.fila:nth-child(8) { animation-delay: 0.40s; }
+.fila:nth-child(9) { animation-delay: 0.45s; }
+.fila:nth-child(10) { animation-delay: 0.50s; }
+
+/* Responsividad */
+@media (max-width: 992px) {
+  .tabla {
+    width: 95%;
+  }
+  
+  .tabla th, .tabla td {
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabla {
+    width: 100%;
+    border-radius: 12px;
+  }
+  
+  .tabla th, .tabla td {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .btn-add-user {
+    padding: 12px 22px;
+  }
+}
