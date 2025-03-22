@@ -3,7 +3,7 @@
     $db_host = "localhost"; 
     $db_usuario = "root";
     $db_password = ""; 
-    $db_nombre = "insulinadb";
+    $db_nombre = "diabetesdb";
 
     // Establecer conexión
     $db = new mysqli($db_host, $db_usuario, $db_password, $db_nombre);
